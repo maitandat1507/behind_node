@@ -1,4 +1,5 @@
 const fs = require('fs');
+const crypto = require('crypto');
 
 // IN EVENT-LOOP
 setTimeout(() => console.log('Timer 1 finished'), 0);
@@ -13,6 +14,8 @@ fs.readFile('test-file.txt', () => {
   setTimeout(() => console.log('Timer 2 finished'), 0);
   setTimeout(() => console.log('Timer 3 finished'), 3000);
   setImmediate(() => console.log('Immediate 2 finished'));
+
+  process.nextTick(() => console.log('Process.nextTick'));
 });
 
 // IN EVENT-LOOP
